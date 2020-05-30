@@ -9,8 +9,12 @@ class TodoController extends ResourceController {
   final ManagedContext context;
 
   @Operation.get()
-  Future<Response> getAllTodos() async {
+  Future<Response> getAllTodos({@Bind.query('title') String title}) async {
     final _query = Query<Todo>(context);
+
+    if (title != null) {
+      _query.where((todo) => todo.title).contains(title, caseSensitive: false);
+    }
 
     final _fetchedTodos = await _query.fetch();
 

@@ -386,6 +386,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.6"
+  uuid_type:
+    dependency: "direct main"
+    description:
+      name: uuid_type
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.1"
   vm_service_client:
     dependency: transitive
     description:

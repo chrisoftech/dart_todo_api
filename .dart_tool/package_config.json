@@ -332,6 +332,12 @@
       "languageVersion": "2.0"
     },
     {
+      "name": "uuid_type",
+      "rootUri": "file:///C:/Users/CHRISOFTECH/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/uuid_type-1.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
+    },
+    {
       "name": "vm_service_client",
       "rootUri": "file:///C:/Users/CHRISOFTECH/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/vm_service_client-0.2.6+3",
       "packageUri": "lib/",
@@ -362,7 +368,7 @@
       "languageVersion": "2.0"
     }
   ],
-  "generated": "2020-05-30T05:22:54.564759Z",
+  "generated": "2020-05-30T07:37:13.150455Z",
   "generator": "pub",
   "generatorVersion": "2.7.2"
 }

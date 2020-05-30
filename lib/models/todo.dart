@@ -9,7 +9,11 @@ class Todo extends ManagedObject<_Todo> implements _Todo {
 
   @override
   void willInsert() {
-    createdat = DateTime.now().toUtc();
+    final _currentTimeUTC = DateTime.now().toUtc();
+
+    id = uuid.v4();
+    createdat = _currentTimeUTC;
+    updatedat = _currentTimeUTC;
   }
 }
 

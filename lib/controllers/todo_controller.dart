@@ -49,6 +49,10 @@ class TodoController extends ResourceController {
   @Operation.put('id')
   Future<Response> updateTodo(
       @Bind.path('id') String id, @Bind.body() Todo todo) async {
+    if (todo.asMap().isEmpty) {
+      return Response.badRequest();
+    }
+
     final _query = Query<Todo>(context)
       ..where((todo) => todo.id).equalTo(id)
       ..values = todo;

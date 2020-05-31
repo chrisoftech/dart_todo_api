@@ -11,12 +11,14 @@ class AqueductTodoChannel extends ApplicationChannel {
         (rec) => print("$rec ${rec.error ?? ""} ${rec.stackTrace ?? ""}"));
 
     final dataModel = ManagedDataModel.fromCurrentMirrorSystem();
+
+    final _config = TodoConfiguration(options.configurationFilePath);
     final persistentStore = PostgreSQLPersistentStore.fromConnectionInfo(
-      'dart_todo_user',
-      '1234567890',
-      'localhost',
-      5432,
-      'dart_todo',
+      _config.database.username,
+      _config.database.password,
+      _config.database.host,
+      _config.database.port,
+      _config.database.databaseName,
     );
 
     context = ManagedContext(dataModel, persistentStore);
@@ -30,4 +32,10 @@ class AqueductTodoChannel extends ApplicationChannel {
 
     return router;
   }
+}
+
+class TodoConfiguration extends Configuration {
+  TodoConfiguration(String path) : super.fromFile(File(path));
+
+  DatabaseConfiguration database;
 }

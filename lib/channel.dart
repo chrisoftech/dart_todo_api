@@ -1,9 +1,13 @@
+import 'package:aqueduct/managed_auth.dart';
+import 'package:aqueduct_todo/controllers/register_controller.dart';
 import 'package:aqueduct_todo/controllers/todo_controller.dart';
+import 'package:aqueduct_todo/models/user.dart';
 
 import 'aqueduct_todo.dart';
 
 class AqueductTodoChannel extends ApplicationChannel {
   ManagedContext context;
+  AuthServer authServer;
 
   @override
   Future prepare() async {
@@ -22,11 +26,18 @@ class AqueductTodoChannel extends ApplicationChannel {
     );
 
     context = ManagedContext(dataModel, persistentStore);
+
+    final _delegate = ManagedAuthDelegate<User>(context);
+    authServer = AuthServer(_delegate);
   }
 
   @override
   Controller get entryPoint {
     final router = Router();
+
+    router
+        .route("/register")
+        .link(() => RegisterController(authServer, context));
 
     router.route("/todos/[:id]").link(() => TodoController(context));
 

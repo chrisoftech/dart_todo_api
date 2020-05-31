@@ -145,7 +145,7 @@ void main() {
       expectResponse(_response, 400, body: null);
     });
 
-    test('POST should return 400 Bad request on empty request body present',
+    test('PUT should return 400 Bad request on empty request body present',
         () async {
       final _query = Query<Todo>(harness.application.channel.context)
         ..values.title = 'Working by 6pm'

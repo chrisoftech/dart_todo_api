@@ -21,6 +21,9 @@ class _Todo {
   @Column(primaryKey: true, unique: true)
   String id;
 
+  @Column(indexed: true)
+  String author;
+
   @Column(unique: true, indexed: true)
   String title;
 

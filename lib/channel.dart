@@ -39,7 +39,12 @@ class AqueductTodoChannel extends ApplicationChannel {
         .route("/register")
         .link(() => RegisterController(authServer, context));
 
-    router.route("/todos/[:id]").link(() => TodoController(context));
+    router.route("/login").link(() => AuthController(authServer));
+
+    router
+        .route("/todos/[:id]")
+        .link(() => Authorizer.bearer(authServer))
+        .link(() => TodoController(context));
 
     return router;
   }

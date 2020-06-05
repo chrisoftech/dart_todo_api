@@ -22,7 +22,9 @@ class User extends ManagedObject<_User>
           'Username is not valid. Enter a valid email address for username');
     }
 
-    if (!isLength(password, 6)) {
+    // print('Is Length up to 6? ${!isLength(password, 6)}');
+
+    if (password != null && password.length < 6) {
       context.addError('Password should have a minimum of 6 characters');
     }
 
